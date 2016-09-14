@@ -1,0 +1,90 @@
+﻿@using system.web.mvc.html 
+@model LifeInsuranceWeb.Models.CalculateModel
+@{
+    ViewBag.Title = "Calculate";
+}
+
+<h2>Calculate</h2>
+
+@using (Html.BeginForm("Calculate", "Home"))
+{
+<Div>
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+
+</Div>
+
+<Div>
+
+    @Html.LabelFor(m => m.DateOfBirth, "What is your date of birth?")
+    @Html.TextBoxFor(m => m.DateOfBirth)
+    @Html.ValidationMessageFor(m => m.DateOfBirth)
+
+</Div>
+
+<Div>
+
+    @Html.LabelFor(m => m.Gender, "Male", new {@for = "Male" })
+    @Html.RadioButtonFor(m => m.Gender, "Male", new { id = "Male" })
+    @Html.ValidationMessageFor(m => m.Gender)
+
+
+    @Html.LabelFor(m => m.Gender, "Female", new { @for = "Female" })
+    @Html.RadioButtonFor(m => m.Gender, "Female", new { id = "Female" })
+    @Html.ValidationMessageFor(m => m.Gender)
+
+</Div>
+
+<Div>
+        @Html.LabelFor(m => m.Country, "Where do you live? ")
+
+        @{var Country = new List<SelectListItem>
+    {
+        new SelectListItem { Text = "England", Value="England" },
+        new SelectListItem{ Text = "Scotland", Value="Scotland" },
+        new SelectListItem { Text = "Wales", Value="Wales" },
+        new SelectListItem { Text = "Ireland", Value="Ireland" },
+        new SelectListItem { Text = "Northern Ireland", Value="Northern Ireland" },
+        new SelectListItem { Text = "Other", Value="Other" },
+    };
+            @Html.DropDownList("Country", new SelectList(Country, "Value", "Text"))
+        }
+
+</Div>
+
+<Div> Do you have Children?
+
+    @Html.LabelFor(m => m.Children, "Yes", new { @for = "Yes-child" })
+    @Html.RadioButtonFor(m => m.Children, "Yes", new { id = "Yes-child" })
+    @Html.ValidationMessageFor(m => m.Children)
+
+    @Html.LabelFor(m => m.Children, "No", new { @for = "No-child" })
+    @Html.RadioButtonFor(m => m.Children, "No", new { id = "No-child" })
+    @Html.ValidationMessageFor(m => m.Children)
+
+</Div>
+
+<Div> Do you smoke?
+
+    @Html.LabelFor(m => m.Smoker, "Yes", new { @for = "Yes-smoke" })
+    @Html.RadioButtonFor(m => m.Smoker, "Yes", new { id = "Yes-smoke" })
+    @Html.ValidationMessageFor(m => m.Smoker)
+
+    @Html.LabelFor(m => m.Smoker, "No", new { @for = "Yes-smoke" })
+    @Html.RadioButtonFor(m => m.Smoker, "Yes", new { id = "No-smoke" })
+    @Html.ValidationMessageFor(m => m.Smoker)
+
+</Div>
+
+<Div>
+
+    @Html.LabelFor(m => m.HoursOfExercise, "How Many Hours of Exercise do you do a week?")
+    @Html.TextBoxFor(m => m.HoursOfExercise)
+    @Html.ValidationMessageFor(m => m.HoursOfExercise)
+
+</Div>
+
+    <input type="submit" value="Calculate" onclick=""   />
+  
+}

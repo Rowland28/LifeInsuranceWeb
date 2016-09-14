@@ -1,7 +1,19 @@
-﻿@{
-    ViewBag.Title = "About";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿@model List<LifeInsuranceWeb.Models.AboutModel>
+         @{
+            ViewBag.Title = "About";
+        }
+        @*<h2>@Model.Name</h2>
+        <h3>@Model.Location</h3>*@
 
-<p>Use this area to provide additional information.</p>
+        <p>
+           @*<div> @Model.Name </div>
+          <div>  @Model.Age </div>
+           <div>  @Model.Location </div>*@
+
+            @foreach (var aboutModel in Model)
+            {
+                <div>@aboutModel.Name</div>
+                <div>@aboutModel.Age</div>
+                <div>@aboutModel.Location</div>
+            }
+        </p>
